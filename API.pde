@@ -11,6 +11,8 @@ class API {
   
   ArrayList<Node> nodes = new ArrayList<Node>();
   
+  ArrayList<Edge> route = new ArrayList<edges>();
+  
   API() {
     state = State.SELECT_START;
     
@@ -145,6 +147,69 @@ class API {
   void drawNodes() {
     for(int i =0; i < nodes.size(); i++) {
       nodes.get(i).draw();
+    }
+  }
+  
+  void dijkstra() {
+    boolean finished = false;
+    
+    // Stack to keep current nodes on
+    ArrayList<Node> nodeStack = new ArrayList<Node>();
+    
+    // List of visited nodes
+    ArrayList<Node> visitedNodes = new ArrayList<Node>();
+    
+    // Add first node
+    nodeStack.add(start.node);
+    
+    Node current;
+    
+    while !finished {
+      if(nodeStack.size() = 0) { // Node stack is empty, either path is impossible or something has gone very wrong
+        throw new Exception("nodeStack is empty, path impossible");
+        break;
+      
+      current = findShortest(nodeStack); // Find shortest node
+      if(current == end.node) { // If reached end break from loop
+        finished = true;
+        makeRoute();
+        break;
+      }
+      
+      nodeStack.remove(current);
+      visitedNodes.add(current);
+      
+      for(int i = 0; i < current.edges.size(); i++) { // Go through edges on shortest node
+        if visitedNodes.contains(current.edges.get(i).endNode) { // Already visited node
+          if(current.dijPathLength + current.edges.get(i).lengthOfEdge < current.edges.get(i).endNode.dijPathLength) { // new path length is shorter than old length
+            current.edges.get(i).endNode.dijPathLength = current.dijPathLength + current.edges.get(i).lengthOfEdge;
+            current.edges.get(i).endNode.dijVia = current.edges.get(i);
+          }
+        } else { // Haven't visited node
+          nodeStack.add(current.edges.get(i).endNode);
+          current.edges.get(i).endNode.dijPathLength = current.dijPathLength + current.edges.get(i).lengthOfEdge;
+          current.edges.get(i).endNode.dijVia = current.edges.get(i);
+        }
+      }
+    }
+    
+    // Find shortest node in a stack
+    Node findShortest(ArrayList<Node> nodeStack) {
+      if(nodeStack.size() > 0){
+        Node shortest = nodeStack.get(0);
+        
+        for(int i = 0; i < nodeStack.size(); i++) {
+          if(nodeStack.get(i).dijPathLength < shortest.dijPathLength) {
+            shortest = nodeStack.get(i);
+          }
+        }
+      } else { // Given a array of length 0 (should never happen)
+        throw new Exception("'findShortest()' passed array of length 0");
+      }
+    }
+    
+    void makeRoute() {
+       m
     }
   }
 }

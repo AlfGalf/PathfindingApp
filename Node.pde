@@ -4,6 +4,9 @@ class Node {
   int row;
   Tile tile;
   
+  int dijPathLength;
+  Edge dijVia;
+  
   ArrayList<Edge> edges = new ArrayList<Edge>();
   
   Node(int collumn, int row) {
