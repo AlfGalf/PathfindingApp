@@ -19,7 +19,11 @@ void mousePressed() {
   mAPI.mousePressed();
 }
 
-void draw() {
+void mouseDragged() {
+  mAPI.mousePressed();
+}
+
+void draw(){
   mUI.mGrid.draw();
   mAPI.drawNodes();
 }

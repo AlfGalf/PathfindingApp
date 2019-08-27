@@ -88,8 +88,11 @@ class Square {
             toReturn[0] = 40; toReturn[1] = 40; toReturn[2] = 40;
             break;
           case PATH:
-            int value = (int) ((findTile().pathValue) * (255/mAPI.pathLength));
-            toReturn[0] = (int) (value); toReturn[1] = 0; toReturn[2] = (int) (255 - value);
+            toReturn[0] = 250; toReturn[1] = 250; toReturn[2] = 250;
+            break;
+          case ROUTE:
+            float fraction = (float) (findTile().pathValue) / mAPI.pathLength;
+            toReturn[0] = ceil(127* sin(TWO_PI* ((fraction +1/3) %1)) + 128); toReturn[1] = ceil(127*sin(TWO_PI*((fraction+2/3)%1)) + 128); toReturn[2] = ceil(127*sin(TWO_PI*((fraction)%1)) + 128);
             break;
           case START:
             toReturn[0] = 100; toReturn[1] = 255; toReturn[2] = 100;

@@ -3,5 +3,5 @@ enum State {
 }
 
 enum TileType {
-  START, END, PATH, WALL
+  START, END, PATH, WALL, ROUTE
 }

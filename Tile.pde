@@ -3,7 +3,7 @@ class Tile {
   int collumn;
   int row;
   
-  Node node;
+  Node node = null;
   
   TileType tileType;
   
@@ -12,8 +12,6 @@ class Tile {
   Tile(int collumn, int row) {
     this.collumn = collumn;
     this.row = row;
-    
-    pathValue = 0;
     
     if(collumn == 0 ||
        row == 0 ||
@@ -30,7 +28,7 @@ class Tile {
   }
   
   void onClicked() {
-    print("Collumn: " + collumn + ", Row: " + row + " clicked, Tile Vaue: " + pathValue+ " \n");
+    print("Collumn: " + collumn + ", Row: " + row + " clicked, Path Value: " + pathValue+ " \n");
     
     switch(mAPI.state) {
       case SELECT_START:

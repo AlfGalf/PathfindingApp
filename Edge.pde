@@ -49,16 +49,16 @@ class Edge {
   }
   
   void draw() {
-    stroke(255, 0, 0);
-    line((width/COLLUMN_NUM) * (startTile.collumn + 0.5),
-         (height/ROW_NUM) * (startTile.row + 0.5),
-         (width/COLLUMN_NUM) * (endTile.collumn + 0.5),
-         (height/ROW_NUM) * (endTile.row + 0.5));
+    //stroke(255, 0, 0);
+    //line((width/COLLUMN_NUM) * (startTile.collumn + 0.5),
+    //     (height/ROW_NUM) * (startTile.row + 0.5),
+    //     (width/COLLUMN_NUM) * (endTile.collumn + 0.5),
+    //     (height/ROW_NUM) * (endTile.row + 0.5));
   }
   
   void setPathValues(int start) {
-    for(int i = 0; i < lengthOfEdge; i++) {
-        tiles[i].pathValue = start + i;
-      }
+    //for(int i = 0; i < lengthOfEdge; i++) {
+    //    tiles[i].pathValue = start + i;
+    //  }
   }
 }
