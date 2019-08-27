@@ -2,8 +2,8 @@ API mAPI;
 Handler mHandler;
 UI mUI;
 
-final int ROW_NUM = 9;
-final int COLLUMN_NUM = 9;
+final int ROW_NUM = 20;
+final int COLLUMN_NUM = 20;
 
 void setup() {
   size(600, 600);

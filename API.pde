@@ -163,7 +163,12 @@ class API {
         }
       }
       visitedNodes.add(currentNode);
-      listOfNodes.remove(currentNode);
+      boolean removing = true;
+      while (removing) {
+        if(!listOfNodes.remove(currentNode)) {
+          removing = false;
+        }
+      }
       print("List of nodes size: ",listOfNodes.size());
     }
   }
@@ -202,7 +207,12 @@ class API {
         break;
       }
       
-      nodeStack.remove(current);
+      boolean removing = true;
+      while(removing) {
+        if(!nodeStack.remove(current)) {
+          removing = false; 
+        }
+      }
       visitedNodes.add(current);
       
       println("Num Nodes connected = ", current.edges.size());
@@ -211,13 +221,13 @@ class API {
           if(current.dijPathLength + current.edges.get(i).lengthOfEdge < current.edges.get(i).endNode.dijPathLength) { // new path length is shorter than old length
             current.edges.get(i).endNode.dijPathLength = current.dijPathLength + current.edges.get(i).lengthOfEdge;
             current.edges.get(i).endNode.dijVia = current.edges.get(i);
-            print("Shortest route to: ",current.edges.get(i).endNode.tile.collumn , ",", current.edges.get(i).endNode.tile.collumn ,") updated.\n");
+            print("Shortest route to: ",current.edges.get(i).endNode.tile.collumn , ",", current.edges.get(i).endNode.tile.row ,") updated.\n");
           }
         } else { // Haven't visited node
           nodeStack.add(current.edges.get(i).endNode);
           current.edges.get(i).endNode.dijPathLength = current.dijPathLength + current.edges.get(i).lengthOfEdge;
           current.edges.get(i).endNode.dijVia = current.edges.get(i);
-          print("Added node: = (", current.edges.get(i).endNode.tile.collumn , ",", current.edges.get(i).endNode.tile.collumn ,").\n");
+          print("Added node: = (", current.edges.get(i).endNode.tile.collumn , ",", current.edges.get(i).endNode.tile.row ,").\n");
         }
       }
     }

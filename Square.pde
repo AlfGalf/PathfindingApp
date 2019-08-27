@@ -92,7 +92,7 @@ class Square {
             break;
           case ROUTE:
             float fraction = (float) (findTile().pathValue) / mAPI.pathLength;
-            toReturn[0] = ceil(127* sin(TWO_PI* ((fraction +1/3) %1)) + 128); toReturn[1] = ceil(127*sin(TWO_PI*((fraction+2/3)%1)) + 128); toReturn[2] = ceil(127*sin(TWO_PI*((fraction)%1)) + 128);
+            toReturn[0] = ceil(127* sin(TWO_PI* ((fraction +1.0/3) %1)) + 128); toReturn[1] = ceil(127*sin(TWO_PI*((fraction+2.0/3)%1)) + 128); toReturn[2] = ceil(127*sin(TWO_PI*((fraction)%1)) + 128);
             break;
           case START:
             toReturn[0] = 100; toReturn[1] = 255; toReturn[2] = 100;
