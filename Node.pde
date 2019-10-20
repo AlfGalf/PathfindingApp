@@ -24,12 +24,14 @@ class Node {
   }
   
   void draw() {
-    //fill( 0, 0, 255 );
-    //circle((width/COLLUMN_NUM) * (tile.collumn +0.5),
-    //       (width/ROW_NUM) * (tile.row +0.5),
-    //       30);
-    //for(int i =0; i < edges.size(); i++) {
-    //  edges.get(i).draw();
-    //}
+    if(mAPI.debug) {
+      fill( 0, 0, 255 );
+      circle((width/COLLUMN_NUM) * (tile.collumn +0.5),
+             (height/ROW_NUM) * (tile.row +0.5),
+             min(width/COLLUMN_NUM, height/ROW_NUM)/2);
+      for(int i =0; i < edges.size(); i++) {
+        edges.get(i).draw();
+      }
+    }
   }
 }

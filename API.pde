@@ -1,6 +1,7 @@
 
 class API {
   State state;
+  boolean debug = false;
 
   Tile[][] tileMatrix;
   
@@ -36,6 +37,8 @@ class API {
         state = State.ALGORITHM;
         dijkstra();
       }
+    } else if (key == 'm' || key == 'M') {
+      debug = !debug;
     }
   }
   
